@@ -1,0 +1,28 @@
+{{extend 'layout_admin.html'}}
+<script>
+$(document).ready(function() {
+
+    $("#submit_btn").click(function(){     
+     if ( ! $('#inputfile').val() )
+      {
+        alert('Chose a file!');
+        return false;   
+      } 
+        else
+      {
+            var s = $('#inputfile').val().toUpperCase().split(/[. ]+/).pop();
+            if((s == 'JPG') || (s == 'PNG') || (s == 'JPEG'))
+            {
+                return true;                         
+            }
+                else
+            {    
+                alert('File type not allowed,\nAllowed file: *.jpg,*.jpeg,*.png');                       
+                return false;  
+                s = '';
+            }                       
+      }       
+    });
+});    
+</script>
+{{=form}}

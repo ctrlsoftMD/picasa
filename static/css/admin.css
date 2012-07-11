@@ -1,0 +1,170 @@
+.btn{
+	margin-left:2px;
+}
+.container
+{
+	width:1250px;
+}
+.navbar-inner {
+  background-color: #00a0d1;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00a0d1), to(#008db8)); /* Webkit */
+  background-image: -moz-linear-gradient(#00a0d1, #008db8); /* FF3.6 */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00a0d1', endColorstr='#008db8'); /* IE6,IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00a0d1', endColorstr='#008db8')"; /* IE8 */
+}
+.navbar .nav > li > a {
+	float: none;
+	padding: 10px 10px 11px;
+	line-height: 19px;
+	color: #BFE4EF;
+	text-decoration: none;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.header{
+	height:150px;
+}
+.web2py_table div table {
+  width: 100%;
+  margin-bottom: 18px;
+  border: 1px solid #ddd;
+}
+.web2py_table div table th, .web2py_table  div table td {
+  padding: 7px;
+  line-height: 14px;
+  text-align: left;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+.web2py_table div table th {
+  font-weight: none;
+  vertical-align: bottom;
+}
+.web2py_table div table td {
+  vertical-align: top;
+}
+.web2py_table div table thead:first-child tr th, .table thead:first-child tr td {
+  border-top: 0;
+}
+.web2py_table div table  tbody + div table tbody {
+  border-top: 2px solid #ddd;
+}
+.web2py_form{
+	  margin-top:5px;
+}
+.web2py_form table{
+	border: 1px solid #ddd;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.web2py_form table tr{
+	 border-top: 1px solid #ddd;
+}
+.web2py_form table tr td{
+	padding:10px;
+}
+.web2py_form table tr .w2p_fw{
+	border-left:1px solid #ddd;
+}
+.web2py_console input[type="submit"]
+{
+	  display: inline-block;
+  padding: 4px 10px 4px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #fafafa;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
+  background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+  border: 1px solid #ccc;
+  border-bottom-color: #bbb;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  *margin-left: .3em;
+}
+.web2py_console form
+{
+	
+}
+.web2py_console input[type="submit"]:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #e6e6e6;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -ms-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+.wrapper
+{
+	border:1px solid #ddd;
+}
+.thumbnail-horiz{
+	overflow: hidden;
+	width: 100%;
+	height:110px;
+}
+.albumthumb {
+	height:253px;
+	width:140px;
+}
+.albumthumb .caption {
+	padding:0;
+}
+.albumthumb .span2{
+	margin-left:0;
+	height:243px;
+	overflow:hidden;
+}
+.albumthumb h5{
+	height:36px;
+}
+.albumthumb .control-group {
+	margin-top:3px;
+	margin-bottom: 3px;
+}
+.input-small-picasa{
+	width:130px;
+}
+#btn_create{
+	margin-left:3px;
+}
+#myytplayer{
+	margin:0;
+	padding:0;
+	z-index:1000;
+}
+.modal {
+	max-height: 700px;
+	overflow: auto;
+	max-width: 660px;
+	margin: -250px 0 0 -280px;
+}
+.text, td.w2p_fw{
+	width:540px;
+}
+.web2py_paginator{height:36px;margin:18px 0;}
+.web2py_paginator ul{display:inline-block;*display:inline;*zoom:1;margin-left:0;margin-bottom:0;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.05);-moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.05);box-shadow:0 1px 2px rgba(0, 0, 0, 0.05);}
+.web2py_paginator li{display:inline;}
+.web2py_paginator a{float:left;padding:0 14px;line-height:34px;text-decoration:none;border:1px solid #ddd;border-left-width:0;}
+.web2py_paginator a:hover,.web2py_paginator .current a{background-color:#f5f5f5;}
+.web2py_paginator .current a{color:#999999;cursor:default;}
+.web2py_paginator .disabled a,.web2py_paginator .disabled a:hover{color:#999999;background-color:transparent;cursor:default;}
+.web2py_paginator li:first-child a{border-left-width:1px;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
+.web2py_paginator li:last-child a{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
+.web2py_paginator{text-align:center;}

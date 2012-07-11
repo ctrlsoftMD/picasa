@@ -1,0 +1,111 @@
+{{extend 'layout_admin.html'}}
+ <script>
+$(document).ready(function() {
+     $("#newAlbum").click(function(){
+        $(this).attr('disabled','disabled')
+        $('.thumbnails').prepend("<li class='thumbnail albumthumb' id='newAlbumLi'><div class='span2'><img src='{{=URL('static','img/album_cover.jpg')}}'/><div class='caption'><div class='control-group'><div class='controls'><input id='newAlbumInput' placeholder='Album Title' name='newAlbumTitle' type='text'  class='input-small-picasa'/></div></div><button class='btn btn-small' href='' id='btn_cancel'><i class='icon-remove-circle'></i>Cancel</button><button data-loading-text='creating...' class='btn btn-small btn-primary' id='btn_create_album'><i class='icon-ok-circle icon-white'></i>Create</button></div></div></li>");
+    })    
+    $("#btn_cancel").live("click",function(){
+        $("#newAlbum").removeAttr('disabled')
+        $("#newAlbumLi").remove();
+    })
+    $("#btn_create_album").live("click",function(){
+          var Inputvalue = $("#newAlbumInput").val();          
+          if(Inputvalue == "")
+          {
+              $("#newAlbumInput").parent('div').parent('div').addClass("error");                      
+          }
+              else
+          {             
+             // $(this).button('loading');
+              $(this).button('toggle')
+              $("#newAlbum").removeAttr('disabled');
+              ajax('{{=URL('newAlbum')}}',['newAlbumTitle'], 'target');
+              $.post('{{=URL('newAlbum')}}', {newAlbumTitle: $("#newAlbumTitle").val()}, function(result){ 
+                $("#target").html(result);                            
+                }); 
+          }
+    })    
+
+    $("#btn_open_album").live("click", function(){      
+        $('#album_id').val($(this).attr('name'));
+        $('#target').empty().html("<img src='{{=URL('static','img/ajax-loader.gif')}}'/>")           
+        $.post('{{=URL('loadAlbumPhotos')}}', {album_id: $("#album_id").val()}, function(result){ 
+            $("#target").html(result);                     
+        });
+        $("#backToAlbum").removeAttr('disabled')
+        $("#newAlbum").attr('disabled','disabled')
+    });   
+
+    $("#btn_delete_album").live("click", function(){    
+      deleteIt=confirm('Are you shure that you want do delete?');
+      if(deleteIt)
+      {
+        $('#album_id').val($(this).attr('name'));
+        $('#'+ $(this).attr('name')).empty().html("<img src='{{=URL('static','img/ajax-loader.gif')}}'/>");
+            $.post('{{=URL('deleteAlbum')}}', {album_id: $("#album_id").val()}, function(result){ 
+            $("#"+ $("#album_id").val()).remove();                             
+        });    
+      }            
+          else
+      {
+        return false;
+      }
+    })      
+   
+    $("#backToAlbum").click(function(){
+         $(this).attr('disabled','disabled')
+         $('#target').empty().html("<img src='{{=URL('static','img/ajax-loader.gif')}}'/>")
+         ajax('{{=URL('loadAlbums')}}',[], 'target');  
+         $("#newAlbum").removeAttr('disabled')      
+    })
+   
+    
+    $("#btn_delete_photo").live("click",function(){ 
+      $(".foto").empty().html("<img src='{{=URL('static','img/ajax-loader.gif')}}'/>");     
+      $.post('{{=URL('deletePhoto')}}', {album_id: $("#album_id").val(), photo_id: $("#photo_id").val()}, function(result){ 
+                $(".foto").html(result); 
+                $("#myModal").modal('hide');  
+                $("#"+$("#photo_id").val()).remove();                  
+            });                  
+    })   
+    
+    $(".photo_thumb").live("click", function(){
+        var url = $(this).attr('url')
+        
+        // set hidden inputs in case of delete
+        $('#album_id').val($(this).attr('album_id'));
+        $('#photo_id').val($(this).attr('photo_id'));
+        
+        $(".foto").html("<img src='"+url+"' alt=''/>");
+        $("#myModal").modal()
+    });    
+});
+</script>
+<div class="btn-toolbar">
+        <p>        
+          <button  class="btn" id="backToAlbum" disabled>Inapoi la Album</button>        
+          <button  class="btn" id="newAlbum"><i class="icon-plus"></i> Album Nou</button>
+          <a class="btn btn-info" href="{{=URL('appadmin','uploadPhoto')}}" id="addPhotos"><i class="icon-upload icon-white"></i> Upload</a>
+        </p>
+  </div>   
+{{=LOAD('appadmin', 'loadAlbums.load',target='target', ajax = True)}}
+<input type="hidden" name="album_id" id="album_id"/>
+<input type="hidden" name="photo_id" id="photo_id"/>
+<div id="target"></div>
+
+
+
+<div id="myModal" class="modal" style="display: none; ">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">×</a>
+      <h4>Vide Title</h4>
+    </div>
+    <div class="modal-body">     
+             <div class="thumbnail foto">              
+             </div>            
+    </div>
+    <div class="modal-footer">
+         <button class="btn btn-danger btn-small" id="btn_delete_photo"><i class="icon-trash icon-white"></i>Delete</button>
+    </div>
+</div>

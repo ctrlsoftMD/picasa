@@ -1,0 +1,37 @@
+.clearfix.error > label, form .clearfix.error .help-block, form .clearfix.error .help-inline {
+  color: #b94a48;
+}
+.clearfix.error input, form .clearfix.error textarea {
+  border-color: #ee5f5b;
+}
+.clearfix.error input:focus, form .clearfix.error textarea:focus {
+  border-color: #e9322d;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+  -moz-box-shadow: 0 0 6px #f8b9b7;
+  box-shadow: 0 0 6px #f8b9b7;
+}
+.wrapper{
+	margin-top:50px;
+	width:980px;
+	height:100%;
+	margin-left:auto;
+	margin-right:auto;
+}
+.thumbnail .caption {
+	padding:0;
+}
+.thumbnail .span2{
+	margin-left:0;
+	height:223px;
+	overflow:hidden;
+}
+.thumbnail .control-group {
+	margin-top:3px;
+	margin-bottom: 3px;
+}
+.input-small-picasa{
+	width:130px;
+}
+#btn_create{
+	margin-left:3px;
+}

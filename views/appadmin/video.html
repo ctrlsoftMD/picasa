@@ -1,0 +1,76 @@
+{{extend 'layout_admin.html'}}
+<script>
+$(document).ready(function() {
+
+    $(".page").click(function(){
+    $('#page_index').val($(this).html());
+    $('#target').empty().html('<img src="http://127.0.0.1:8000/youtube/static/images/ajax_loader.gif"/>');
+        ajax('{{=URL('printEntries')}}',['page_index'], 'target');
+       return false
+    })   
+    
+    $(".delete_btn").live("click", function(){   
+      deleteIt=confirm('Are you shure that you want do delete?');
+      if(deleteIt)
+      {
+           $('#video_id').val($(this).attr('name'));
+           $('#'+ $(this).attr('name')).empty().html('<img src="http://127.0.0.1:8000/youtube/static/images/ajax_loader_small.gif"/>'); 
+           $.post('{{=URL('deleteEntry')}}', {video_id: $("#video_id").val()}, function(result){ 
+               $("#"+$('#video_id').val()).remove();                     
+                });
+      }            
+          else
+      {
+        return false;
+      }
+    })
+       $(".play").live("click", function(){ 
+ 
+            $('#myModal').modal() 
+            id = $(this).attr('name') 
+                                   
+            var b=new SWFObject("http://www.youtube.com/v/"+id+"?enablejsapi=1&playerapiid=ytplayer&version=3&modestbranding=1&border=0&iv_load_policy=3&rel=0","videoplayer","530","310","9","#ffffff");
+            b.addParam("allowfullscreen","true");
+            b.addParam("allowscriptaccess","always");
+            b.addParam("wmode","opaque");
+            b.addVariable("menu","false");
+            b.addVariable("file","http://www.youtube.com/watch%3Fv%3D"+id);
+            b.addVariable("dock","false");
+            b.write("ytapiplayer")                        
+                
+    })
+    
+});
+</script>
+
+<div id="controls">
+<a class="btn btn-info"  href="{{=URL('appadmin','setVideoTitle')}}"><i class="icon-upload icon-white"></i>Upload</a>
+</div>
+
+{{=LOAD('appadmin', 'printEntries.load',target='target', ajax = True)}}
+
+<input type="hidden" name="video_id" id="video_id"/>
+  
+    <div id="target">
+    </div>
+
+<div id="myModal" class="modal fade" style="display: none; ">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">×</a>
+      <h4>Photo Title</h4>
+    </div>
+    <div class="modal-body">
+       <div id="ytapiplayer">
+        You need Flash player 8+ and JavaScript enabled to view this video.
+      </div>
+    </div>
+</div>
+
+<div class="pagination pagination-centered">
+<input type="hidden" name="page_index" id="page_index"/>
+    <ul>
+      {{for page in range(1,total_pages+1):}}
+         <li><a href="" class="page">{{=str(page)}}</a></li>
+       {{pass}}  
+    </ul>
+</div>

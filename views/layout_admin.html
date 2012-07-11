@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Orhei Admin</title>
+  
+ {{include 'web2py_ajax.html'}} 
+  <script type="text/javascript" src="{{=URL('static','js/swfobject.js')}}"></script>
+  <link rel="stylesheet" href="{{=URL('static','css/bootstrap.css')}}"> 
+  <link rel="stylesheet" href="{{=URL('static','css/admin.css')}}"> 
+  <script src="{{=URL('static','js/bootstrap.min.js')}}" type="text/javascript"></script>
+     
+ </head>
+<body>
+  <div class="container">
+   <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="{{=URL('appadmin','index')}}">Picasa and Youtube</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="{{=URL('appadmin','photo')}}">Picasa Photos</a></li>
+              <li><a href="{{=URL('appadmin','video')}}">Youtube Videos</a></li>             
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    
+    <div class="header">
+    </div>
+
+    <div class="main">
+      <div class="container">                                    
+          {{include}}       
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+  </div>
+ 
+</body>
+</html>
